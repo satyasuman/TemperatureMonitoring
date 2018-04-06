@@ -1,0 +1,48 @@
+entity Customer {
+	primaryEmail String required,
+    organization String
+}
+
+entity DeviceProvider {
+	providerOrganization String required,
+    supportEmail String,
+    supportPhone String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Device {
+	vendorAssignedDeviceId String required,
+    deviceDescription String,
+    deviceProvider DeviceProvider required,
+    assignedToCustomer Customer required
+}
+
+entity DeviceTelemetry {
+	telemetryDateTimeStamp Date,
+    temperature Number,
+    latitude Number,
+    longitude Number,
+    battery String,
+    telemetryFor Device
+}
+
+// defining multiple OneToMany relationships with comments
+relationship ManyToOne {
+	DeviceTelemetry{telemetryFor} to Device
+}
+
+
+// defining multiple oneToOne relationships
+relationship OneToOne {
+	Device{deviceProvider} to DeviceProvider,
+	Device{assignedToCustomer} to Customer
+}
+
+// Set pagination options
+paginate DeviceTelemetry with infinite-scroll
+
+dto * with mapstruct
+
+// Set an angular suffix
+angularSuffix * with temperaturemonitoring
