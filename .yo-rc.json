@@ -28,10 +28,6 @@
       "de",
       "en"
     ],
-    "clientFramework": "angularX",
-    "jhipsterVersion": "4.14.1",
-    "packageFolder": "com/novartis/temperaturemonitoring",
-    "jwtSecretKey": "3e543d8d07bbab9968d5185d865372470665ee29",
     "jhiPrefix": "jhi"
   }
 }
